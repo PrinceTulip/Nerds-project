@@ -1,7 +1,3 @@
-/**
- * Created by Ho   wme on 05.05.2017.
- */
-
 var link = document.querySelector(".contact-us");
 var popup = document.querySelector(".popup");
 var close = popup.querySelector(".popup-close");
@@ -12,7 +8,7 @@ var mail = popup.querySelector("[name=name-mail]");
 
 link.addEventListener("click", function(event) {
     event.preventDefault();
-popup.classList.add("popup-show");
+    popup.classList.add("popup-show");
 });
 
 close.addEventListener("click", function(event) {
@@ -36,5 +32,15 @@ window.addEventListener("keydown", function(event) {
         }
     }
 });
+
+
+
+
+
+
+
+
+
+
 
 

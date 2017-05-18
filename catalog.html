@@ -6,6 +6,24 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+      $( function() {
+          $( "#slider-range" ).slider({
+              range: true,
+              min: 0,
+              max: 500,
+              values: [ 75, 300 ],
+              slide: function( event, ui ) {
+                  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+              }
+          });
+          $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+              " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+      } );
+  </script>
 </head>
 <body>
 <header class="main-header">
@@ -16,13 +34,13 @@
     <nav class="main-navigation clearfix">
       <ul class="menu">
         <li>
-          <a href="http://localhost:63342/Nerds/index.html?_ijt=s888quhbig9kehapt6kc0haag1">Студия</a>
+          <a href="#">Студия</a>
         </li>
         <li>
           <a href="#">Клиенты</a>
         </li>
         <li>
-          <a class="active" href="#">Магазин</a>
+          <a class="active-h" href="#">Магазин</a>
         </li>
         <li>
           <a href="#">Контакты</a>
@@ -37,13 +55,18 @@
     </div>
   </div>
 </header>
-
 <main class="container clearfix">
   <div class="catalog clearfix">
     <div class="inner-column-left clearfix">
-      <div class="small-slider">
+      <div class="slider-ui">
         <span>Стоимость:</span>
         <div class="slider-small">
+          <p>
+            <label for="amount">Price range:</label>
+            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+          </p>
+
+          <div id="slider-range"></div>
           <img src="images/small-slider.jpg" width="240" height="81"  alt="small-slider">
         </div>
         <div class="range-price">
@@ -226,7 +249,6 @@
     </div>
   </div>
 </main>
-
 <div class="map">
   <div class="address">
     <b>NЁRDS DESIGN STUDIO</b>
@@ -281,6 +303,6 @@
     <button class="btn" type="submit">Отправить</button>
   </form>
 </div>
-<script src="scripts.js"></script>
+<script src="js/scripts.js"></script>
 </body>
 </html>
