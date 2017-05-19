@@ -800,7 +800,7 @@ a {
 
 .item-card .item-description {
     position: absolute;
-    top: 51px;
+    top: 46px;
     left: 19px;
 }
 
@@ -846,7 +846,7 @@ a {
 
 .item-card img {
     width: 240px;
-    height: 240px;
+    height: 260px;
     padding-top: 30px;
 }
 
