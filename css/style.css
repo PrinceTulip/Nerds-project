@@ -436,61 +436,30 @@ a {
   padding-left: 104px;
 }
 
-.slider-ui {
-    margin-bottom: 15px;
+.slider-small label {
+  display: inline-block;
+  padding-bottom: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
-.slider-ui span {
-    display: inline-block;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding-bottom: 23px;
+.slider-small span {
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-right: 5px;
 }
 
-.slider-ui .br {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-right: 10px;
-    float: left;
-    padding-top: 10px;
-}
 
-.slider-ui .inf-to {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-right: 10px;
-    padding-top: 10px;
-    padding-left: 25px;
-    float: left;
 
-}
-
-.slider-ui input[type="text"] {
-    float: left;
-    width: 45px;
-    border: none;
-    outline: 0;
-    cursor: pointer;
-    background: #f1f1f1;
-    padding: 11px 15px 11px 15px;
-    border-radius: 3px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.slider-ui input[type="text"]:last-child {
-    margin-right: 0;
-}
-
-.my-inp-br {
-    margin-right: 10px;
-}
-
-.range-price {
-    float: left;
-    width: 240px;
-    margin-bottom: 52px;
-    margin-top: 10px;
+.slider-bg {
+  width: 238px;
+  height: 80px;
+  background: #f1f1f1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
 
 .grid {

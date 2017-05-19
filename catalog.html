@@ -6,6 +6,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-ui.css">
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -14,15 +16,56 @@
           $( "#slider-range" ).slider({
               range: true,
               min: 0,
-              max: 500,
-              values: [ 75, 300 ],
+              max: 2000,
+              values: [ 0, 1500 ],
               slide: function( event, ui ) {
-                  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                  $( "#amount" ).val( "" + ui.values[ 0 ] );
+                  $( "#amount-1" ).val( "" + ui.values[ 1 ] );
               }
           });
-          $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-              " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-      } );
+          $( "#amount" ).val( "" + $( "#slider-range" ).slider( "values", 0 ) );
+          $( "#amount-1" ).val( "" + $( "#slider-range" ).slider( "values", 1 ) );
+
+        // Изменение местоположения ползунка при вводе данных в первый елемент input
+          $("input#amount").change(function(){
+              var value1 = $("input#amount").val();
+              var value2 = $("input#amount-1").val();
+              if (parseInt(value1) > parseInt(value2)){
+                  value1 = value2;
+                  $("input#amount").val(value1);
+              }
+              $("#slider-range").slider("values",0,value1);
+          });
+
+        // Изменение местоположения ползунка при вводе данных во второй елемент input
+          $("input#amount-1").change(function() {
+              var value1=$("input#amount").val();
+              var value2=$("input#amount-1").val();
+
+              if (parseInt(value1) > parseInt(value2)){
+                  value2 = value1;
+                  $("input#amount-1").val(value2);
+              }
+              $("#slider-range").slider("values",1,value2);
+          });
+
+          //Фильтрация ввода в поля
+          jQuery('#amount,amount-1').keypress(function(event){
+              var key, keyChar;
+              if(!event) var event = window.event;
+
+              if (event.keyCode) key =event.keyCode;
+              else if(event.which) key = event.which;
+
+              if(key==null || key ==0  || key==8 || key==13 || key==9 || key==46 || key==37 || key==39 )
+                  return true;
+              keyChar=String.fromCharCode(key);
+
+              if(!/\d/.test(keyChar)) return false;
+
+          });
+
+      });
   </script>
 </head>
 <body>
@@ -58,32 +101,18 @@
 <main class="container clearfix">
   <div class="catalog clearfix">
     <div class="inner-column-left clearfix">
-      <div class="slider-ui">
-        <span>Стоимость:</span>
         <div class="slider-small">
           <p>
-            <label for="amount">Price range:</label>
-            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-          </p>
-
-          <div id="slider-range"></div>
-          <img src="images/small-slider.jpg" width="240" height="81"  alt="small-slider">
+            <label for="amount">Стоимость:</label>
+          <div class="slider-bg">
+            <div id="slider-range"></div>
         </div>
-        <div class="range-price">
-          <form class="before" action="#" method="post">
-              <label class="br" for="my-br">
-                От
-              </label>
-              <input class="my-inp-br" type="text" id="my-br" name="inf-before">
-            </form>
-            <form class="to" action="#" method="post">
-              <label class="inf-to" for="my-to">
-                До
-              </label>
-              <input class="my-inp-to" type="text" id="my-to" name="inf-to">
-            </form>
-          </div>
-      </div>
+            <span>От</span>
+            <input type="text" id="amount">
+            <span>До</span>
+            <input type="text" id="amount-1">
+          </p>
+        </div>
       <div class="grid clearfix">
         <span>Сетка:</span>
         <form class="grid-type" action="#" method="post">
