@@ -239,9 +239,10 @@ a {
 }
 
 .index-column-left h2 {
-  text-align: left;
-  font-size: 36px;
-  padding-bottom: 20px;
+    text-align: left;
+    font-size: 36px;
+    padding-bottom: 20px;
+    text-transform: none;
 }
 
 .index-column p {
